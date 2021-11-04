@@ -3,12 +3,12 @@ package controller
 import (
 	"net/http"
 
-	"github.com/SilpasertS/sa-64-example/entity"
 	"github.com/gin-gonic/gin"
+	"github.com/phu024/G13-Outpatient-Management/entity"
 )
 
-// GET /cashiers
-// List all cashiers
+// GET /cashier
+// List all cashier
 func ListCashiers(c *gin.Context) {
 	var cashiers []entity.Cashier
 	if err := entity.DB().Raw("SELECT * FROM cashiers").Scan(&cashiers).Error; err != nil {
@@ -33,7 +33,7 @@ func GetCashier(c *gin.Context) {
 }
 
 // POST /cashiers
-func CreateCashier(c *gin.Context) {
+func CreateUser(c *gin.Context) {
 	var cashier entity.Cashier
 	if err := c.ShouldBindJSON(&cashier); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
@@ -49,7 +49,7 @@ func CreateCashier(c *gin.Context) {
 }
 
 // PATCH /cashiers
-func UpdateCashier(c *gin.Context) {
+func UpdateUser(c *gin.Context) {
 	var cashier entity.Cashier
 	if err := c.ShouldBindJSON(&cashier); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
@@ -70,14 +70,14 @@ func UpdateCashier(c *gin.Context) {
 }
 
 // DELETE /cashiers/:id
-func DeleteCashier(c *gin.Context) {
+func DeleteUser(c *gin.Context) {
 	id := c.Param("id")
 	if tx := entity.DB().Exec("DELETE FROM cashiers WHERE id = ?", id); tx.RowsAffected == 0 {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "cashier not found"})
 		return
 	}
 	/*
-		if err := entity.DB().Where("id = ?", id).Delete(&entity.Cashier{}).Error; err != nil {
+		if err := entity.DB().Where("id = ?", id).Delete(&entity.User{}).Error; err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
 		}*/

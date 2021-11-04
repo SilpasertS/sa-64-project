@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/SilpasertS/sa-64-example/service"
 	"github.com/gin-gonic/gin"
+	"github.com/phu024/G13-Outpatient-Management/service"
 )
 
 // validates token

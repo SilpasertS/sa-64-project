@@ -77,6 +77,7 @@ function ReceiptCreate() {
     setError(false);
   };
 
+
   const handleChange = (
     event: React.ChangeEvent<{ name?: string; value: unknown }>
   ) => {
@@ -148,7 +149,7 @@ function ReceiptCreate() {
       CashierID: convertType(receipt.CashierID),
       BillID: convertType(receipt.BillID),
       MethodID: convertType(receipt.MethodID),
-      WatchedTime: selectedDate,
+      SavedTime: selectedDate,
     };
 
     const requestOptionsPost = {
@@ -269,11 +270,10 @@ function ReceiptCreate() {
               <p>วันที่และเวลา</p>
               <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <KeyboardDateTimePicker
-                  name="WatchedTime"
+                  name="SavedTime"
                   value={selectedDate}
                   onChange={handleDateChange}
                   label="กรุณาเลือกวันที่และเวลา"
-                  minDate={new Date("2018-01-01T00:00")}
                   format="yyyy/MM/dd hh:mm a"
                 />
               </MuiPickersUtilsProvider>

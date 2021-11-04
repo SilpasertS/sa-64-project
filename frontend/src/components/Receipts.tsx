@@ -13,6 +13,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import { ReceiptInterface } from "../models/IReceipt";
+import moment from "moment";
 import { format } from 'date-fns'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -111,7 +112,7 @@ function Receipts() {
                   <TableCell align="center">{item.Bill.ID}</TableCell>
                   <TableCell align="center">{item.Method.Type}</TableCell>
                   <TableCell align="center">{item.Cashier.Name}</TableCell>
-                  <TableCell align="center">{format((new Date(item.SavedTime)), 'dd MMMM yyyy hh:mm a')}</TableCell>
+                  <TableCell align="center">{moment(item.SavedTime).format('D MMMM YYYY (HH:mm')}{" น.)"}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

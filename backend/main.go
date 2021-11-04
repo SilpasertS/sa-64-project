@@ -1,10 +1,10 @@
 package main
 
 import (
-	"github.com/SilpasertS/sa-64-example/controller"
-	"github.com/SilpasertS/sa-64-example/entity"
-	"github.com/SilpasertS/sa-64-example/middlewares"
 	"github.com/gin-gonic/gin"
+	"github.com/phu024/G13-Outpatient-Management/controller"
+	"github.com/phu024/G13-Outpatient-Management/entity"
+	"github.com/phu024/G13-Outpatient-Management/middlewares"
 )
 
 func main() {
@@ -20,8 +20,7 @@ func main() {
 			// Cashier Routes
 			protected.GET("/cashiers", controller.ListCashiers)
 			protected.GET("/cashier/:id", controller.GetCashier)
-			protected.PATCH("/cashiers", controller.UpdateCashier)
-			protected.DELETE("/cashiers/:id", controller.DeleteCashier)
+			
 
 			// Bill Routes
 			protected.GET("/bills", controller.ListBills)
@@ -48,10 +47,10 @@ func main() {
 	}
 
 	// User Routes
-	r.POST("/cashiers", controller.CreateCashier)
+	
 
 	// Authentication Routes
-	r.POST("/login", controller.Login)
+	r.POST("/login", controller.LoginCashier)
 
 	// Run the server
 	r.Run()
